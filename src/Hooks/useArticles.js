@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import API from "../Helpers/Api";
+import API from "../Services/Api";
 
 import { useArticleContext } from "../Provider/ArticleProvider";
 
@@ -11,7 +11,7 @@ const useArticles = () => {
 
   const fetchData = () => {
     setLoading(true);
-    API.get(`/viewed/${dayLimit}.json`)
+    API.getArticles(dayLimit)
       .then((res) => {
         setResponse(res.data.results);
         setError(false);
